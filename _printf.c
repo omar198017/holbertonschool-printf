@@ -3,7 +3,6 @@
 /**
  * get_handler - gets the corresponding handler for a format specifier
  * @c: format specifier character
- * Author: Omar Caguazango
  * Return: pointer to the handler function, or NULL if not found
  */
 int (*get_handler(char c))(va_list)
@@ -16,8 +15,9 @@ int (*get_handler(char c))(va_list)
         {'i', print_int},
         {'\0', NULL}
     };
+    int i;
 
-    for (int i = 0; handlers[i].specifier; i++)
+    for (i = 0; handlers[i].specifier; i++)
     {
         if (handlers[i].specifier == c)
             return (handlers[i].func);
