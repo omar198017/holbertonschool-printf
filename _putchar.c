@@ -1,9 +1,9 @@
-#include <unistd.h>
+#include "main.h"
 
 /**
  * _putchar - writes a character to stdout
- * @c: the character to print
- *
+ * @c: character to print
+ * Author: Omar Caguazango
  * Return: 1 on success, -1 on error
  */
 int _putchar(char c)
