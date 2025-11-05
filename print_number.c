@@ -2,6 +2,8 @@
 
 int print_int(va_list args, char *buffer, int buff_ind)
 {
+	(void)buffer;
+	(void)buff_ind;
 	int n = va_arg(args, int);
 	unsigned int num;
 	int count = 0;

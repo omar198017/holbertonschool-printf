@@ -5,6 +5,8 @@
  */
 int print_pointer(va_list args, char *buffer, int buff_ind)
 {
+	(void)buffer;
+	(void)buff_ind;
 	unsigned long ptr = (unsigned long)va_arg(args, void *);
 	char hex[20];
 	int i = 0, count = 0;

@@ -5,6 +5,8 @@
  */
 int print_binary(va_list args, char *buffer, int buff_ind)
 {
+	(void)buffer;
+	(void)buff_ind;
 	unsigned int n = va_arg(args, unsigned int);
 	int bits[32];
 	int i, count = 0;

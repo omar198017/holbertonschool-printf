@@ -4,6 +4,8 @@
 /* %S - Non-printable chars in \x format */
 int print_custom_S(va_list args, char *buffer, int buff_ind)
 {
+	(void)buffer;
+	(void)buff_ind;
 	char *str = va_arg(args, char *);
 	int i, count = 0;
 
@@ -29,6 +31,8 @@ int print_custom_S(va_list args, char *buffer, int buff_ind)
 /* %r - prints reversed string */
 int print_rev(va_list args, char *buffer, int buff_ind)
 {
+	(void)buffer;
+	(void)buff_ind;
 	char *str = va_arg(args, char *);
 	int len = 0, count = 0;
 
@@ -47,6 +51,8 @@ int print_rev(va_list args, char *buffer, int buff_ind)
 /* %R - prints rot13 string */
 int print_rot13(va_list args, char *buffer, int buff_ind)
 {
+	(void)buffer;
+	(void)buff_ind;
 	char *str = va_arg(args, char *);
 	int i, j, count = 0;
 	char alpha[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";

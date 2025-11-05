@@ -2,6 +2,8 @@
 
 int print_char(va_list args, char *buffer, int buff_ind)
 {
+	(void)buffer;
+	(void)buff_ind;
 	char c = va_arg(args, int);
 	buffer[buff_ind] = c;
 	write(1, &buffer[buff_ind], 1);
@@ -10,6 +12,8 @@ int print_char(va_list args, char *buffer, int buff_ind)
 
 int print_string(va_list args, char *buffer, int buff_ind)
 {
+	(void)buffer;
+	(void)buff_ind;
 	int i;
 	char *str = va_arg(args, char *);
 
@@ -24,6 +28,8 @@ int print_string(va_list args, char *buffer, int buff_ind)
 
 int print_percent(va_list args, char *buffer, int buff_ind)
 {
+	(void)buffer;
+	(void)buff_ind;
 	(void)args;
 	buffer[buff_ind] = '%';
 	write(1, &buffer[buff_ind], 1);

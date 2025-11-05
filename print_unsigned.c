@@ -2,6 +2,8 @@
 
 int print_unsigned(va_list args, char *buffer, int buff_ind)
 {
+	(void)buffer;
+	(void)buff_ind;
 	unsigned int n = va_arg(args, unsigned int);
 	char digits[20];
 	int i = 0, count = 0;
@@ -27,6 +29,8 @@ int print_unsigned(va_list args, char *buffer, int buff_ind)
 /* octal */
 int print_octal(va_list args, char *buffer, int buff_ind)
 {
+	(void)buffer;
+	(void)buff_ind;
 	unsigned int n = va_arg(args, unsigned int);
 	char digits[20];
 	int i = 0, count = 0;
@@ -52,6 +56,8 @@ int print_octal(va_list args, char *buffer, int buff_ind)
 /* hexadecimal lower */
 int print_hex(va_list args, char *buffer, int buff_ind)
 {
+	(void)buffer;
+	(void)buff_ind;
 	unsigned int n = va_arg(args, unsigned int);
 	char hex[20];
 	int i = 0, count = 0;
@@ -78,6 +84,8 @@ int print_hex(va_list args, char *buffer, int buff_ind)
 /* hexadecimal upper */
 int print_HEX(va_list args, char *buffer, int buff_ind)
 {
+	(void)buffer;
+	(void)buff_ind;
 	unsigned int n = va_arg(args, unsigned int);
 	char hex[20];
 	int i = 0, count = 0;
