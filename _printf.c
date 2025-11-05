@@ -1,39 +1,69 @@
 #include "main.h"
 
 /**
- * _printf - produces output according to a format
- * @format: format string
+ * get_handler - gets the corresponding handler for a format specifier
+ * @c: format specifier character
  * Author: Omar Caguazango
+ * Return: pointer to the handler function, or NULL if not found
+ */
+int (*get_handler(char c))(va_list)
+{
+    format_handler_t handlers[] = {
+        {'c', print_char},
+        {'s', print_string},
+        {'%', print_percent},
+        {'d', print_int},
+        {'i', print_int},
+        {'\0', NULL}
+    };
+
+    for (int i = 0; handlers[i].specifier; i++)
+    {
+        if (handlers[i].specifier == c)
+            return (handlers[i].func);
+    }
+    return (NULL);
+}
+
+/**
+ * _printf - produces output according to a format
+ * @format: format string containing characters and specifiers
+ *
  * Return: number of characters printed
  */
 int _printf(const char *format, ...)
 {
-	int i, printed = 0, buff_ind = 0;
-	va_list args;
-	char buffer[BUFF_SIZE];
+    va_list args;
+    int i = 0, count = 0;
+    int (*func)(va_list);
 
-	if (!format)
-		return (-1);
+    if (!format)
+        return (-1);
 
-	va_start(args, format);
+    va_start(args, format);
 
-	for (i = 0; format && format[i]; i++)
-	{
-		if (format[i] != '%')
-			buffer[buff_ind++] = format[i];
-		else
-		{
-			print_buffer(buffer, &buff_ind);
-			i++;
-			if (!format[i])
-				return (-1);
-			printed += handle_print(format, &i, args, buffer, &buff_ind);
-		}
-		if (buff_ind == BUFF_SIZE)
-			print_buffer(buffer, &buff_ind);
-	}
-	print_buffer(buffer, &buff_ind);
+    while (format && format[i])
+    {
+        if (format[i] == '%')
+        {
+            i++;
+            if (!format[i])
+                return (-1);
 
-	va_end(args);
-	return (printed);
+            func = get_handler(format[i]);
+            if (func)
+                count += func(args);
+            else
+            {
+                count += _putchar('%');
+                count += _putchar(format[i]);
+            }
+        }
+        else
+            count += _putchar(format[i]);
+        i++;
+    }
+
+    va_end(args);
+    return (count);
 }

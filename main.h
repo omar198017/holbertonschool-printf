@@ -3,59 +3,25 @@
 
 #include <stdarg.h>
 #include <unistd.h>
-#include <stdlib.h>
-
-#define BUFF_SIZE 1024
-
-/**
- * struct print_handler - Struct for mapping specifiers to functions
- * @specifier: format specifier character
- * Author: Omar Caguazango
- * @f: function pointer to handler
- */
-
- typedef struct print_handler
-{
-	char specifier;
-	int (*f)(va_list, char *, int);
-} print_handler_t;
 
 /* Prototypes */
-
 int _printf(const char *format, ...);
-
 int _putchar(char c);
+int print_number(int n);
+int print_char(va_list args);
+int print_string(va_list args);
+int print_percent(va_list args);
+int print_int(va_list args);
 
-int handle_print(const char *format, int *i, va_list args, char *buffer, int *buff_ind);
-
-void print_buffer(char *buffer, int *buff_ind);
-
-/* print functions */
-
-int print_char(va_list args, char *buffer, int buff_ind);
-
-int print_string(va_list args, char *buffer, int buff_ind);
-
-int print_percent(va_list args, char *buffer, int buff_ind);
-
-int print_int(va_list args, char *buffer, int buff_ind);
-
-int print_binary(va_list args, char *buffer, int buff_ind);
-
-int print_unsigned(va_list args, char *buffer, int buff_ind);
-
-int print_octal(va_list args, char *buffer, int buff_ind);
-
-int print_hex(va_list args, char *buffer, int buff_ind);
-
-int print_HEX(va_list args, char *buffer, int buff_ind);
-
-int print_pointer(va_list args, char *buffer, int buff_ind);
-
-int print_custom_S(va_list args, char *buffer, int buff_ind);
-
-int print_rev(va_list args, char *buffer, int buff_ind);
-
-int print_rot13(va_list args, char *buffer, int buff_ind);
+/**
+ * struct format_handler - Struct for mapping format specifiers to functions
+ * @specifier: The format character (e.g. 'c', 's', 'd')
+ * @func: The function that handles that specifier
+ */
+typedef struct format_handler
+{
+    char specifier;
+    int (*func)(va_list);
+} format_handler_t;
 
 #endif /* MAIN_H */
